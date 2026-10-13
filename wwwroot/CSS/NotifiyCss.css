@@ -1,0 +1,96 @@
+﻿body {
+}
+
+
+
+        .ClosedClass {
+            background-color: #ddffdd !important;
+             font-family:Arial;
+            font-weight: normal;
+            font-size: 13px;
+            color: black;
+            width: 500px;
+            padding-top: 3px;
+            padding-right: 3px;
+            padding-bottom: 3px;
+            padding-left: 3px;
+            margin-top: 1px;
+            margin-right: 1px;
+            margin-bottom: 1px;
+            margin-left: 1px;
+            border-top: 1px solid #4CAF50;
+            border-right: 1px solid #4CAF50;
+            border-left: 4px solid #4CAF50;
+            border-bottom: 1px solid #4CAF50;
+            border-radius: 5px;
+        }
+
+        .OpenClass {
+            background-color: #f5d4d4 !important;
+            font-family:Arial;
+            font-weight: normal;
+            font-size: 13px;
+            color: black;
+            width: 500px;
+            padding-top: 3px;
+            padding-right: 3px;
+            padding-bottom: 3px;
+            padding-left: 3px;
+            margin-top: 1px;
+            margin-right: 1px;
+            margin-bottom: 1px;
+            margin-left: 1px;
+            border-top: 1px solid #f64646;
+            border-right: 1px solid #f64646;
+            border-left: 4px solid #f64646;
+            border-bottom: 1px solid #f64646;
+            border-radius: 5px;
+        }
+
+
+
+
+
+.NormalLbl {
+    font-size: 12px; font-weight: bold ; font-family :Arial ;  color: black;
+}
+
+.LblColorFirst {
+font-size: 14px; font-weight: bold ;font-family :Arial ;  color: #94034c;
+}
+
+.LblColorSecond {
+font-size: 12px; font-weight: bold ;font-family :Arial ;  color: maroon;
+}
+
+
+
+
+     
+.notification {
+  /*background-color: #555;
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;*/
+}
+
+.notification:hover {
+  /*background: red;*/
+}
+
+.notification .badge {
+  position: absolute;
+  /*top: 61px;
+  right: 15px;*/
+  padding: 0px 5px;
+  border-radius: 50%;
+  background-color: #e44a3f;
+  color: white;
+  font-size:13px;
+
+  margin-left:5px;
+      margin-top: -2px;
+}

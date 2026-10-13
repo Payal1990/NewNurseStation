@@ -1,0 +1,119 @@
+﻿body {
+background-color: #D7DFE2;
+margin:0px;
+padding:0px;
+font: 10px ;
+font-family:Calibri;
+color: #416271;
+}
+#main_container{
+width:1340px;
+height:auto;
+margin:auto;
+background-color:#FFFFFF;
+vertical-align :top ;
+}
+#header{
+width:1340px;
+height:auto;
+margin:auto;
+}
+#logo{
+padding-left:10px; 
+padding-right:10px; 
+padding-top:4px; 
+float:left;
+height:30px;
+text-align :left;
+}
+/*----------------------menu-------------------------*/
+#menu{
+width:1340px;
+height:25px;
+padding: 0px;
+clear:both;
+background-color:#416271;
+color:#f0f8ff ;
+}
+#menuTable { /* anamika 20141222*/
+    width :100%; 
+}
+/*-----------------------------footer------------------*/
+#footer{
+clear:both;
+width: 1340px;
+height:30px;
+color: #fff;
+background-color:#416271;
+margin:auto;
+}
+.copyright{
+float:left;
+padding-left:10px; 
+padding-top:2px;
+}
+.footer_links{
+float:right;
+padding-right:15px;
+padding-top:13px;
+}
+#footer h2 {
+	padding:0;
+	margin:0;
+	padding-top:13px;
+	font: 14px "Calibri", Arial;
+}
+
+#contentPlace{
+clear:both;
+width: 1340px;
+height:37px;
+margin:auto;
+}
+
+
+/*--------------------------main_content-------------------*/
+#main_content{
+clear:both;
+width: 1340px;
+height:575px;
+margin:auto;
+background-color:White;
+}
+
+#tblHeader h2 {
+	padding:0;
+	margin:0;
+	color: #416271 ;/* #ebebeb; */
+	font: bold 28px "Calibri", Arial;
+}
+
+.divLocH
+{
+	font: 12px "Calibri", Arial;
+}
+.divLoc
+{
+	font: 12px "Calibri", Arial;
+	/* padding-top:4px; */
+}
+.UserH
+{
+	font: 12px Calibri, "Book Antiqua", Arial;
+}
+.User
+{
+	font: 12px Calibri,"Gill Sans MT", Arial;
+		padding-top:4px;
+}
+.ModuleNm
+{
+	font: 14px  "Calibri", "Tw Cen MT", Arial;
+		padding-top:4px;
+}
+.MainContentPanel
+{
+height:578px;
+
+
+}

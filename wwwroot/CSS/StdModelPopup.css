@@ -1,0 +1,152 @@
+﻿
+
+
+
+.alert-header {
+            font-weight: bold;
+            background: #368e89;
+            border-bottom: #eee 1px solid;
+            border-radius: 2px 2px 0 0;
+            margin-bottom: 0;
+            padding: 10px 0 10px 24px;
+            text-align: left;
+            color: #023344;
+        }
+
+        .alert-body {
+            background-color: #EFEFEF;
+            padding: 10px 0 10px 0;
+        }
+
+        .alert-footer {
+            background: #eae6e6; /*#EFEFEF*/
+            padding: 5px 10px 0 0;
+            min-height: 36px;
+            text-align: right;
+        }
+
+        .modal-inner-wrapper {
+            background-color: #2F4F4F;
+        }
+
+            .modal-inner-wrapper .content {
+                background-color: #FFFFFF;
+                border: solid 1px Gray;
+                z-index: 9999;
+                float: right;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+
+                .modal-inner-wrapper .content .close {
+                    float: right;
+                }
+
+                .modal-inner-wrapper .content .body {
+                    margin-top: 20px;
+                }
+
+
+
+        .modal-bg {
+            background-color: white;
+            filter: alpha(opacity=50);
+            opacity: 0.6;
+            z-index: 999;
+        }
+
+        .modal {
+            position: absolute;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            display: none;
+            z-index: 990;
+            width: 100%;
+            height: 100%;
+            background-color: #191919;
+            opacity: 0.7;
+        }
+
+        .btnpopupcss {
+            border-radius: 4px;
+            background-color: #368e89;
+            font-family: Helvetica,Arial,sans-serif,verdana;
+            color: #eff3fb;
+            font-weight: bold;
+            font-size: 13px;
+            height: 25px;
+            width: 65px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+            cursor: pointer;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+            .btnpopupcss:focus, .btnpopupcss:hover {
+                color: #fff;
+                background-color: rgba(80, 191, 185,1); /*rgba(48, 132, 167, 0.95);*/
+                text-decoration: none;
+                border: 1px solid #000;
+            }
+
+
+             .btnpopupcssred {
+            border-radius: 4px;
+            background-color: #e65555;
+            font-family: Helvetica,Arial,sans-serif,verdana;
+            color: #eff3fb;
+            font-weight: bold;
+            font-size: 13px;
+            height: 25px;
+            width: 65px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+            cursor: pointer;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+            .btnpopupcssred:focus, .btnpopupcssred:hover {
+                color: #fff;
+                background-color:#e65555; /*rgba(48, 132, 167, 0.95);*/
+                text-decoration: none;
+                border: 1px solid #000;
+            }
+
+
+   
+     .btnpopupcssBlue {
+            border-radius: 4px;
+            background-color: #03A9F4;
+            font-family: Helvetica,Arial,sans-serif,verdana;
+            color: #eff3fb;
+            font-weight: bold;
+            font-size: 13px;
+            height: 25px;
+            width: 65px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+            cursor: pointer;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+            .btnpopupcssBlue:focus, .btnpopupcssBlue:hover {
+                color: #fff;
+                background-color:#03A9F4; /*rgba(48, 132, 167, 0.95);*/
+                text-decoration: none;
+                border: 1px solid #000;
+            }
+
+

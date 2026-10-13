@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Module</title>
+    <style>
+        html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; }
+        iframe { border: 0; width: 100%; height: 100%; display: block; }
+    </style>
+</head>
+<body>
+    <!--
+        Module host shim (one per open module instance).
+
+        Nurse Station  ->  <iframe host.html>  ->  <iframe module>
+
+        Legacy modules leave by redirecting their *parent* to the suite dashboard
+        (window.parent.location.href = SubMenuPath), because in the suite they run inside the
+        dashboard frame. Here their parent is this shim, so that redirect replaces the shim —
+        not the Nurse Station. The Nurse Station sees the shim frame navigate away and takes
+        control back. Modules that instead redirect *themselves* to the dashboard/login page are
+        caught below by watching the inner frame. No module code is changed.
+    -->
+    <iframe id="module" allow="clipboard-read; clipboard-write; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <script>
+        (function () {
+            var params = new URLSearchParams(location.search);
+            var target = params.get('u');
+            var key = params.get('k') || '';
+            var exitPatterns = (params.get('x') || '').split('|').filter(Boolean).map(function (p) { return p.toLowerCase(); });
+            var frame = document.getElementById('module');
+
+            function notifyExit(reason) {
+                try { parent.postMessage({ type: 'ns-module-exit', key: key, reason: reason }, location.origin); } catch (e) { }
+            }
+
+            frame.addEventListener('load', function () {
+                var href = '';
+                try { href = frame.contentWindow.location.href; } catch (e) { return; } // cross-origin: cannot inspect, rely on parent trap
+                if (!href || href === 'about:blank') return;
+                var h = href.toLowerCase();
+                for (var i = 0; i < exitPatterns.length; i++) {
+                    if (h.indexOf(exitPatterns[i]) !== -1) { notifyExit('self-redirect'); return; }
+                }
+            });
+
+            if (target) frame.src = target;
+        })();
+    </script>
+</body>
+</html>

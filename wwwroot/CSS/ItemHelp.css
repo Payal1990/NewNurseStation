@@ -1,0 +1,163 @@
+﻿body
+{
+}
+.GridBorder
+{
+	border-style: solid;
+	border-width: thin;
+	border-color: #17375D;
+}
+.GridHeader
+{
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #C5D9F1; /*	color: #17375D; */
+	color: Black;
+	height: 20px;
+	text-align: left;
+}
+.GridFooter
+{
+	font-family: Verdana;
+	font-size: 13px;
+	font-weight: bold;
+	background-color: #17375D;
+	color: White;
+}
+.GridRow
+{
+	font-family: Verdana;
+	font-size: 12px;
+	background-color: #F2F2F2;
+	border-bottom: 1px solid #17375D;
+	border-top: 1px solid #17375D;
+	color: black;
+	height: 25px;
+}
+.GridAlterRow
+{
+	font-family: Verdana;
+	font-size: 12px;
+	background-color: #EAF1DD;
+	border-bottom: 1px solid #17375D;
+	border-top: 1px solid #17375D;
+	color: black;
+	height: 20px;
+}
+.GridBlankRow
+{
+	background-color: white;
+	border-bottom: 1px solid #17375D;
+	border-top: 1px solid #17375D;
+	height: 6px;
+}
+.FooterLink
+{
+	font-family: Verdana;
+	font-size: 13px;
+	color: #7030A0;
+	font-style: italic;
+	font-family: Verdana;
+	padding-top: 2px;
+	padding-left: 5px;
+}
+.Text1
+{
+	color: #87DDF2;
+}
+.Text2
+{
+	color: #F2DD8A;
+}
+.LegendsTD
+{
+	font-size: 11px;
+	font-family: Verdana;
+	color: Black;
+}
+.Legends
+{
+	border: 1px solid black;
+	height: 15px;
+	width: 15px;
+}
+
+
+.textboxRightAlign
+{
+	border: 1px solid #A2C4E7;
+	font-size: 12px;
+	font-family: verdana,helvetica, ms sans serif;
+	text-align: right;
+}
+
+.pnlPOPUps
+{
+	cursor: move;
+	border: 3px solid #BED3F0;
+	height: 20px;
+	text-align: center;
+	background-color: Aliceblue; /*#CFDFFC;*/
+	color: #000000;
+	font-size: 16px;
+	font-family: calibri;
+	padding: 10px;
+}
+
+/*  Free Item Grid */
+.HelpHeader
+{
+	font-family: verdana,helvetica, ms sans serif;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #D0E0F4; /*	color: #17375D; */
+	color: #214485;
+	height: 25px;
+	text-align: center;
+}
+.HelpBorder
+{
+	border-style: solid;
+	border-width: thin;
+	border-color: #ADC8EC;
+}
+.FreeItemGrdRow
+{
+	font-family: verdana,helvetica, ms sans serif;
+	font-size: 12px;
+	background-color: #E1E8F0; /* border-bottom: 1px solid #ADC8EC; 	border-top: 1px solid #ADC8EC;  */
+	color: black;
+	
+	height: 20px;
+	border: thin solid white;
+}
+.FreeItemGrdAlterRow
+{
+	font-family: verdana,helvetica, ms sans serif;
+	font-size: 12px;
+	background-color: #EEF3F9; /* border-bottom: 1px solid #ADC8EC; 	border-top: 1px solid #ADC8EC;  */
+	color: #214485;
+	height: 20px;
+	border: thin solid white;
+}
+.FreeItemGrdHeader
+{
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #90AACF; /*	color: #17375D; */
+	color: white;
+	height: 25px;
+	text-align: left;
+	border: thin solid white;
+}
+.AlignLeft
+{
+	text-align: left;
+}
+.AlignRight
+{
+	text-align: right;
+}
+/* End  Free Item Grid */

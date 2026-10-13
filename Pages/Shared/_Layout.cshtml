@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0e8c74" />
+    <title>@(ViewData["Title"] ?? "CARE @ WORKS")</title>
+    <!-- Suite stylesheets (kept for alertify and shared component classes) -->
+    <link href="~/CSS/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="~/CSS/alertify.core.css" rel="stylesheet" type="text/css" />
+    <link href="~/CSS/alertify.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Tablet theme -->
+    <link href="~/CSS/NurseStationTablet.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <!-- Colours follow this installation's suite stylesheets (see js/theme.js) -->
+    <script src="~/js/theme.js" asp-append-version="true"></script>
+</head>
+<body>
+    @RenderBody()
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script src="~/js/nurse-station-simplified.js" asp-append-version="true"></script>
+    <script src="~/js/theme-panel.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

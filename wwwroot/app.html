@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0e8c74" />
+    <title>CARE @ WORKS</title>
+    <!-- Suite stylesheets (kept for alertify and shared component classes) -->
+    <link href="CSS/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/alertify.core.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/alertify.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Tablet theme -->
+    <link href="CSS/NurseStationTablet.css?v=__V__" rel="stylesheet" type="text/css" />
+    <!-- Colours follow this installation's suite stylesheets (see js/theme.js) -->
+    <script src="js/theme.js?v=__V__"></script>
+</head>
+<body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+        <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-clear" viewBox="0 0 24 24"><path d="M4 6h16M9 6V4h6v2M6 6l1 14h10l1-14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-exit" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-cards" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+        <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+        <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+        <symbol id="i-clearfilter" viewBox="0 0 24 24"><path d="M5 4h14l-5.5 7v6l-3 2v-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 15l4 4m0-4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.1-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5-4.5-9-10-9z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6.5" cy="11.5" r="1.5" fill="currentColor"/><circle cx="10" cy="7.5" r="1.5" fill="currentColor"/><circle cx="14" cy="7.5" r="1.5" fill="currentColor"/><circle cx="17.5" cy="11.5" r="1.5" fill="currentColor"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+        <symbol id="i-density" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-field" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    </svg>
+
+    <!-- ===== App bar ===== -->
+    <header class="appbar">
+        <div class="appbar-brand">
+            <img id="imgClient" alt="" />
+            <div>
+                <div class="appbar-company" id="lblClient"></div>
+                <div class="appbar-module" id="lblAppName">NURSE STATION</div>
+            </div>
+        </div>
+        <div class="appbar-meta">
+            <span class="appbar-chip"><small>Division</small><b id="lblDiv"></b></span>
+            <span class="appbar-chip"><small>Location</small><b id="lblLoc"></b></span>
+            <span class="appbar-user"><span class="avatar" id="userAvatar"></span><span><small>Welcome</small><b id="lblUser"></b></span></span>
+            <button type="button" id="btnThemeToggle" class="appbar-theme-btn" title="Theme settings" aria-label="Theme settings"><svg><use href="#i-palette"/></svg></button>
+        </div>
+    </header>
+
+    <!-- ===== Theme Settings Panel ===== -->
+    <div id="themeOverlay" class="scrim" hidden></div>
+    <aside id="themePanel" class="theme-panel" hidden>
+        <div class="theme-panel-head">
+            <span>Appearance</span>
+            <button type="button" id="themeClose" class="ns-modal-x" aria-label="Close">&times;</button>
+        </div>
+        <div class="theme-panel-body">
+            <!-- Color presets -->
+            <div class="theme-section">
+                <h4><svg><use href="#i-palette"/></svg>Color Theme</h4>
+                <div class="theme-swatches" id="themeSwatches"></div>
+            </div>
+            <!-- Field style -->
+            <div class="theme-section">
+                <h4><svg><use href="#i-field"/></svg>Field Style</h4>
+                <div class="theme-options" id="themeFields"></div>
+            </div>
+            <!-- Density -->
+            <div class="theme-section">
+                <h4><svg><use href="#i-density"/></svg>Layout Density</h4>
+                <div class="theme-options" id="themeDensity"></div>
+            </div>
+        </div>
+        <div class="theme-panel-foot">
+            <button type="button" id="themeReset" class="btn btn-ghost">Reset to Default</button>
+        </div>
+    </aside>
+
+    <main class="page">
+        <!-- ===== Filters (always visible) ===== -->
+        <section class="card filters" aria-label="Filters">
+            <div class="filters-body" id="filtersBody">
+                <div class="filter-grid">
+                    <div class="fld">
+                        <label for="boxWard">Ward</label>
+                        <div class="sbox" data-code="txtWardCd" data-desc="txtWardDesc" data-type="ward">
+                            <input id="boxWard" class="sbox-in" type="text" autocomplete="off" spellcheck="false" placeholder="Code or name…" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                            <button type="button" class="sbox-btn" tabindex="-1" aria-label="Search Ward"><svg><use href="#i-search" /></svg></button>
+                            <input type="hidden" id="txtWardCd" /><input type="hidden" id="txtWardDesc" />
+                            <div class="sbox-pop" role="listbox" hidden></div>
+                        </div>
+                    </div>
+
+                    <div class="fld">
+                        <label for="boxSpeciality">Speciality</label>
+                        <div class="sbox" data-code="txtSpecialityCd" data-desc="txtSpecialityDCd" data-type="speciality">
+                            <input id="boxSpeciality" class="sbox-in" type="text" autocomplete="off" spellcheck="false" placeholder="Code or name…" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                            <button type="button" class="sbox-btn" tabindex="-1" aria-label="Search Speciality"><svg><use href="#i-search" /></svg></button>
+                            <input type="hidden" id="txtSpecialityCd" /><input type="hidden" id="txtSpecialityDCd" />
+                            <div class="sbox-pop" role="listbox" hidden></div>
+                        </div>
+                    </div>
+                    <div class="fld">
+                        <label for="boxDoctor">Doctor</label>
+                        <div class="sbox" data-code="txtDocCd" data-desc="txtDocName" data-type="doctor">
+                            <input id="boxDoctor" class="sbox-in" type="text" autocomplete="off" spellcheck="false" placeholder="Code or name…" role="combobox" aria-expanded="false" aria-autocomplete="list" />
+                            <button type="button" class="sbox-btn" tabindex="-1" aria-label="Search Doctor"><svg><use href="#i-search" /></svg></button>
+                            <input type="hidden" id="txtDocCd" /><input type="hidden" id="txtDocName" />
+                            <div class="sbox-pop" role="listbox" hidden></div>
+                        </div>
+                    </div>
+                    <div class="fld">
+                        <label for="txtPatientName">Patient</label>
+                        <div class="sbox">
+                            <input id="txtPatientName" class="sbox-in" type="search" autocomplete="off" placeholder="Name / IP / UHID" />
+                            <button type="button" id="btnPatientSearch" class="sbox-btn" tabindex="-1" aria-label="Search patient"><svg><use href="#i-search" /></svg></button>
+                        </div>
+                    </div>
+                    <div class="fld">
+                        <label for="ddlPtnTypByUser">Patient Type</label>
+                        <select id="ddlPtnTypByUser" class="select"></select>
+                    </div>
+                </div>
+
+                <div class="filter-foot">
+                <div class="chips chips-more" role="group" aria-label="Quick filters">
+                    <label class="chip"><input type="checkbox" id="chkHWC" /><svg><use href="#i-check"/></svg>HWC</label>
+                    <label class="chip"><input type="checkbox" id="chkIsVuln" /><svg><use href="#i-check"/></svg>Vulnerable</label>
+                    <label class="chip"><input type="checkbox" id="chkIsIsolated" /><svg><use href="#i-check"/></svg>Isolated</label>
+                    <label class="chip"><input type="checkbox" id="chkIsArrivedOnBed" /><svg><use href="#i-check"/></svg>Acknowledged only</label>
+                    <span id="tdmrd" class="fld-inline" hidden>
+                        <label for="drpmrdsts">MRD</label>
+                        <select id="drpmrdsts" class="select select-sm">
+                            <option value="0" selected>All</option>
+                            <option value="1">Requested</option>
+                            <option value="2">Created</option>
+                            <option value="4">Returned</option>
+                            <option value="3">Rejected</option>
+                            <option value="5">Returned Back</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="filter-btns">
+                    <button type="button" id="btnSaveFilter" class="btn btn-outline"><svg><use href="#i-bookmark"/></svg><span>Save</span></button>
+                    <button type="button" id="btnClear" class="btn btn-outline-danger"><svg><use href="#i-clearfilter"/></svg><span>Clear</span></button>
+                </div>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <span class="count-pill"><b id="lblTotalCount">0</b> patients</span>
+                <span class="flag-legend" aria-label="Patient markers">
+                    <span><img src="Images/Bellimg.png" width="16" height="16" alt="" />New admission</span>
+                    <span><img src="Images/no.jpg" width="16" height="16" alt="" />High risk</span>
+                    <span><img src="Images/yes.jpg" width="16" height="16" alt="" />Discharge advice given</span>
+                    <span><img src="Images/isolated_ptn_16px.png" width="16" height="16" alt="" />Isolated</span>
+                    <span><i class="swatch folio"></i>Folio closed</span>
+                </span>
+                <div class="actions">
+                    <div class="segmented" role="group" aria-label="View">
+                        <button type="button" id="btnGridview" class="ns-view" title="List view" aria-label="List view"><svg><use href="#i-grid"/></svg><span>List</span></button>
+                        <button type="button" id="btncardview" class="ns-view" title="Card view" aria-label="Card view"><svg><use href="#i-cards"/></svg><span>Cards</span></button>
+                    </div>
+                    <button type="button" id="btnRefresh" class="btn btn-icon" title="Refresh"><svg><use href="#i-refresh"/></svg></button>
+                    <button type="button" id="btnexit" class="btn btn-danger-icon" title="Exit"><svg><use href="#i-exit"/></svg></button>
+                </div>
+            </div>
+        </section>
+
+        <div id="syncBanner" class="sync-banner" role="status" hidden></div>
+
+        <!-- ===== Grid view ===== -->
+        <section id="pnlgrdview" class="card ns-grid-wrap">
+            <table id="grdInPatientDtl">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+            <div id="gridEmpty" class="ns-empty" hidden>
+                <svg><use href="#i-filter"/></svg>
+                <b>No patients found</b>
+                <span>Try changing or clearing the filters.</span>
+            </div>
+        </section>
+
+        <!-- ===== Card view ===== -->
+        <section id="pnlcardview" class="ns-grid-wrap cards-wrap" hidden></section>
+
+        <nav id="gridPager" class="pager" aria-label="Pages" hidden></nav>
+    </main>
+
+    <footer class="footbar">
+        <div class="footbar-inner">
+            <img id="imgSof" alt="" />
+            <span id="lblBottomText"></span>
+        </div>
+    </footer>
+
+    <!-- ===== Row menu ===== -->
+    <div id="custommenu" role="menu" hidden>
+        <div class="ns-menu-head"><span id="menuPtnName"></span><small id="menuPtnIp"></small></div>
+        <ul></ul>
+    </div>
+
+    <!-- ===== LOS confirmation ===== -->
+    <div id="losOverlay" class="scrim" hidden></div>
+    <div id="losPopup" class="ns-modal" role="dialog" aria-modal="true" aria-labelledby="losTitle" hidden>
+        <div class="ns-modal-head">
+            <div><div id="losTitle">Expected length of stay</div><small id="losIp"></small></div>
+            <button type="button" class="ns-modal-x" id="losClose" aria-label="Close">&times;</button>
+        </div>
+        <div class="ns-modal-body" id="losChange">
+            <p id="losContent1"></p>
+            <p id="losContent2" class="callout"></p>
+            <div class="kv"><span>Current expected discharge</span><b id="losCurrDischarge"></b></div>
+            <div class="kv"><span>Skips remaining</span><b id="losSkipCount"></b></div>
+            <div class="ns-modal-actions">
+                <button type="button" id="losSkip" class="btn btn-ghost">SKIP</button>
+                <button type="button" id="losExtend" class="btn btn-warn">Extend</button>
+                <button type="button" id="losConfirm" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+        <div class="ns-modal-body" id="losExtendPanel" hidden>
+            <div class="fld"><label for="txtCurrentLOS">Current LOS (days)</label><input id="txtCurrentLOS" class="input" readonly /></div>
+            <div class="fld"><label for="txtNewLOS">Extend by (days)</label><input id="txtNewLOS" class="input" inputmode="numeric" autocomplete="off" placeholder="e.g. 2" /></div>
+            <div class="kv"><span>New expected discharge</span><b id="lblExtendDischargeDt">—</b></div>
+            <div class="ns-modal-actions">
+                <button type="button" id="losBack" class="btn btn-ghost">Back</button>
+                <button type="button" id="losDoExtend" class="btn btn-primary">Extend LOS</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Patient Tracking (legacy page opened from the Location link) ===== -->
+    <div id="trkOverlay" class="scrim" hidden></div>
+    <div id="trkPopup" class="ns-modal ns-track" role="dialog" aria-modal="true" aria-labelledby="trkTitle" hidden>
+        <div class="ns-modal-head">
+            <div id="trkTitle">Patient Tracking</div>
+            <button type="button" class="ns-modal-x" id="trkClose" aria-label="Close">&times;</button>
+        </div>
+        <div class="ns-modal-body">
+            <dl class="trk-info" id="trkInfo"></dl>
+
+            <h3 class="trk-h">Current Event</h3>
+            <div id="trkCurrent">
+                <div class="trk-curname"><b id="trkEvName"></b><span>[ EVENT ID : <b id="trkEvId"></b> ]</span></div>
+                <div class="trk-fields">
+                    <div class="fld"><label for="trkDate">Actual Date</label><input id="trkDate" type="date" class="input" /></div>
+                    <div class="fld"><label for="trkTime">Actual Time</label><input id="trkTime" type="time" class="input" /></div>
+                    <div class="fld trk-remark"><label for="trkRemark">Remark</label><input id="trkRemark" type="text" class="input" maxlength="150" autocomplete="off" /></div>
+                </div>
+            </div>
+            <p id="trkNone" class="trk-none" hidden>No event is pending for this patient.</p>
+
+            <h3 class="trk-h">Event Details</h3>
+            <div class="trk-table-wrap">
+                <table id="trkTable">
+                    <thead><tr><th>Record ID</th><th>Event ID</th><th>Event Name</th><th>Date</th><th>Time</th><th>Remark</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="trk-legend"><i class="swatch pend"></i>Record pending for acknowledgement</div>
+
+            <div class="ns-modal-actions">
+                <button type="button" id="trkSave" class="btn btn-primary">Save</button>
+                <button type="button" id="trkClear" class="btn btn-ghost">Clear</button>
+                <button type="button" id="trkBack" class="btn btn-ghost">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Module host ===== -->
+    <div id="moduleHost" hidden>
+        <div class="ns-host-bar">
+            <button type="button" id="hostBack" class="btn btn-light"><svg><use href="#i-back"/></svg>Nurse Station</button>
+            <span class="ns-host-title" id="hostTitle"></span>
+            <span class="ns-host-ptn" id="hostPatient"></span>
+        </div>
+        <div class="ns-host-frames" id="hostFrames"></div>
+    </div>
+
+    <div id="nsBusy" class="ns-busy" hidden><div class="ns-spinner"></div></div>
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/alertify.min.js"></script>
+    <script src="js/nurse-station-simplified.js?v=__V__"></script>
+    <script src="js/theme-panel.js?v=__V__"></script>
+</body>
+</html>

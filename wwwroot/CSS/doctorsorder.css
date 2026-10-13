@@ -1,0 +1,496 @@
+.TabHeader
+{
+	font-family: Times New Roman;
+	font-size : 16px ;
+	font-weight : bold;
+	color : black;
+	height : 400px;
+	width : 250px;
+	
+}
+
+
+
+
+.age
+{
+	
+ font-family : Times New Roman ;
+ font-size : 18px;
+ color:black ;
+ font-weight :bold;
+ background-color :Yellow ;
+  
+}
+
+.code
+{
+	font-family : Times New Roman ;
+	font-size : 18px;
+	color:black ;
+	font-weight :bold;
+	background-color :RGB(0,255,0)
+}
+
+.RequisitionDate
+{
+	font-family: Times New Roman;
+	font-size : 16px ;
+	font-weight : bold;
+	color : black;
+}
+
+.ipopdc
+{
+	font-family : Times New Roman ;
+	font-size : 16px;
+	color:black ;
+	text-align :center ;
+	border : 1px solid black;
+}
+
+.Rbutton
+{
+	background-color :RGB(255,128,0);
+	font-family : Times New Roman ;
+	font-weight :bold ;
+	font-size :17px;
+	height : 27px;
+	width : 180px;
+	text-align :center ;  
+	color :black ;
+
+ }
+ 
+.Obutton
+{
+	background-color :Orange ;
+	font-family : Times New Roman ;
+	font-weight :bold ;
+	font-size :17px;
+	height : 27px;
+	width : 180px;
+	text-align :center ;  
+	color :black ;
+
+ } 
+.btnNewOrder, .btnBackToWard
+{
+    font-size: 12px;
+    background-color:rgb(245,133,41);/*rgb(228,109,10);*/
+    font-family: Arial;
+    color: Black;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;      
+}
+
+.btnConfirmOrder, .btnCancelOrder
+{
+    font-size: 12px;
+    background-color:rgb(250,192,144);
+    font-family: Arial;
+    color: Black;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;      
+}
+.btnUrgent
+{
+    background-color: red;
+     border: 2px #ffffff outset;
+      color:White; 
+      height: 30px; 
+      width:80px; 
+      font-size:14px; 
+      font-family :Arial ;
+      font-weight :bold ;
+}
+
+.btnquick
+{
+    background-color: blue;
+    border: 2px #ffffff outset;
+    color:White; 
+      height: 30px; 
+      width:80px; 
+      font-size:14px; 
+      font-family :Arial ;
+      font-weight :bold ;
+}
+
+.btnstandard
+{
+    background-color: green;
+    border: 2px #ffffff outset;
+    color:White; 
+      height: 30px; 
+      width:80px; 
+      font-size:14px; 
+      font-family :Arial ;
+      font-weight :bold ;
+}
+
+.GVLab
+{
+ border-color: #DDD9C3;
+ border-width:3px;
+ border-style :solid;
+ border-spacing :2px;
+ background-color:#CDF30D;
+ color:Black;
+}
+.GVLabHeader
+{
+    font-family: Arial;
+    font-size: 14px;
+    font-weight:normal;
+    background-color: rgb(215,228,188); /*#416271;  #C6E0C9; **/
+    color:black;
+    height:18px;
+    text-align : left ;
+}
+.GVLabItem
+{
+    font-family: Arial;
+    font-size: 14px;
+    color:Black;
+    height:5px;
+    
+}
+
+
+.HeadWidBlueCol1
+{
+    FONT-SIZE: 18px;
+    FONT-FAMILY: Arial ;
+    font-weight:bold;
+    COLOR: blue;
+    BACKGROUND-COLOR: white;
+}
+.numkeypad
+{
+        background-color:#416271;
+         border-bottom-style :solid ;
+         border-color :Black ;
+}
+.numero
+{
+    height:28px;
+    width :33px;
+    background-color:white;
+    text-align:center;
+    color:black;
+    cursor:pointer;
+    font-family: Calibri;
+    font-size: 20px;
+}
+.clear
+{
+    background-color: white;
+    text-align:center;
+    color:blue;
+    cursor:pointer;
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+.done
+{
+    background-color:white;
+    text-align:center;
+    color:green;
+    cursor:pointer;
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+
+
+.timeNumPad
+{
+        background-color:#416271;
+         border-bottom-style :solid ;
+         border-color :Black ;
+}
+.numero1
+{
+    height:24px;
+    width :30px;
+    background-color:white;
+    text-align:center;
+    color:black;
+    cursor:pointer;
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+.clear1
+{
+    background-color: white;
+    text-align:center;
+    color:blue;
+    cursor:pointer;
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+.done1
+{
+    background-color:white;
+    text-align:center;
+    color:green;
+    cursor:pointer;
+    font-family: Calibri;
+    font-size: 20px;
+}
+.nump
+{
+    background-color: yellow;
+ 
+}
+.ModalPopupBG 
+{
+    background-color: #ffffff;/*#666699;*/
+   /* border-bottom-style :dotted;*/
+    filter: alpha(opacity=80);
+	opacity: 0.8;	
+    border-bottom-color :Black ;
+    border-style :double ;
+}
+.popUpStyle
+{
+    font: normal 11px auto "Trebuchet MS" , Verdana;
+    background-color: white;
+    color: #4f6b72;
+    padding: 6px;
+    border: solid;
+    border-width: THICK;
+    
+}
+.HeadWidRedCol
+{
+    FONT-SIZE: 14px;
+    FONT-FAMILY: Arial ;
+    font-weight:bold;
+    COLOR: Red;
+    BACKGROUND-COLOR: white;
+}
+.lblCaptureTestDetails
+{
+    FONT-SIZE: 15px;
+    FONT-FAMILY: Arial ;
+    font-weight:bold;
+    COLOR: Red;
+    BACKGROUND-COLOR: white;
+}
+.lblstandard
+{
+     background-color:#B21A41;    
+}
+.lblquick
+{
+     background-color:RED; /* #B21A42;*/
+       
+}
+.lblurgent
+{
+     background-color: #5234AC;
+       
+}
+
+
+.popUpStyle
+{
+    font: normal 11px auto "Trebuchet MS" , Verdana;
+    background-color: white;
+    color: #4f6b72;
+    padding: 6px;
+    border: solid;
+    border-width: thin;
+    
+}
+
+.pnlPOP
+{
+	 background-color: #dddddd;
+	 cursor: move;
+	 border:solid 1px gray ;
+	 height: 20px;
+	 text-align:center;
+}
+.panel
+{
+	padding:6px;      
+	border: solid;
+	border-width : thin;
+}
+.label
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Arial    ;
+    color: black;
+    font-weight: lighter;
+}
+
+.buttonPrint
+{
+    font-size: 12px;
+    background-color:#2573EB;
+    font-family: Verdana,Helvetica, MS Sans Serif;
+    color: white;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.textbox
+{
+font-size: 14px;
+font-family: Arial; 
+color:black;
+ background-color:white;
+}
+.textboxRightAlign
+{
+font-size: 14px;
+font-family: Arial; 
+color:black;
+text-align:right ;
+}
+.button
+{
+    font-size: 12px;
+    background-color:#416271;
+    font-family: Verdana,Helvetica, MS Sans Serif;
+    color: white;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.buttonExit
+{
+   
+    font-size: 12px;
+    background-color: #FF2B2B;
+    font-family: Verdana,Helvetica, MS Sans Serif;
+    color: white;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.buttonCancel
+{
+    font-size: 12px;
+    background-color:#008B17;
+    font-family: Verdana,Helvetica, MS Sans Serif;
+    color: white;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.buttonSave
+{
+    font-size: 12px;
+    background-color:#D64D29;
+    font-family: Verdana,Helvetica, MS Sans Serif;
+    color: white;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.HeadWidRedCol
+{
+    FONT-SIZE: 14px;
+    FONT-FAMILY: Arial ;
+    font-weight:bold;
+    COLOR: Red;
+    BACKGROUND-COLOR: white;
+}
+.HeadWidBlueCol
+{
+    FONT-SIZE: 14px;
+    FONT-FAMILY: Arial ;
+    font-weight:bold;
+    COLOR: blue;
+    BACKGROUND-COLOR: white;
+}
+.dropdown
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Arial    ;
+    color: black;
+    font-weight: lighter;
+      width: 120px;
+}
+.GridHeader
+{
+    font-family: Arial;
+    font-size: 14px;
+    font-weight:normal;
+    background-color: rgb(215,228,188); /*#416271;  #C6E0C9; **/
+    color:black;
+    height:18px;
+}
+.GridItem
+{
+    font-family: Arial;
+    font-size: 13px;
+    color:Black;
+    height:5px;
+}
+
+
+body {
+}
+
+.txtName, .txtPtnNo
+{
+font-size: 15px;
+font-family: Arial; 
+font-weight :bold;
+color:black;
+ background-color:rgb(185,255,185);
+}
+
+.txtAge
+{
+ font-size: 14px;
+ font-family: Arial; 
+ font-weight : bold ;
+ color:black;
+ background-color: Yellow;
+ border-color :rgb(185,255,185);
+}
+.greenback
+{
+ font-size: 14px;
+ font-family: Arial; 
+ color:black;
+  background-color:#CDF30D;
+ 
+}
+
+.Age
+{
+ font-size: 14px;
+ font-family: Arial;  
+ color:black;
+ background-color: Yellow;
+}
+ 
+ .lblPtnNo
+{
+font-size: 14px;
+font-family: Arial; 
+color:black;
+ background-color:rgb(185,255,185);
+ height :22px;
+ font-weight :bold;
+}
+

@@ -1,0 +1,16 @@
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<main class="page">
+    <section class="card" style="padding:24px;max-width:560px;margin:40px auto;text-align:center;">
+        <h1 style="margin-top:0;">An unexpected error occurred.</h1>
+        <p>Please try again. If the problem continues, contact your administrator.</p>
+        @if (Model.ShowRequestId)
+        {
+            <p><strong>Request ID:</strong> <code>@Model.RequestId</code></p>
+        }
+    </section>
+</main>

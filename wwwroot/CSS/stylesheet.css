@@ -1,0 +1,727 @@
+﻿.MyCalendar .ajax__calendar_container {
+    border: 1px solid LightSkyBlue;
+    background-color: #D6ECFE;
+    color: #0054A8;
+    z-index: 1000;
+}
+
+.MyCalendar .ajax__calendar_other .ajax__calendar_day,
+.MyCalendar .ajax__calendar_other .ajax__calendar_year {
+    color: black;
+}
+
+.MyCalendar .ajax__calendar_hover .ajax__calendar_day,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_month,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_year {
+    color: black;
+}
+
+.MyCalendar .ajax__calendar_active .ajax__calendar_day,
+.MyCalendar .ajax__calendar_active .ajax__calendar_month,
+.MyCalendar .ajax__calendar_active .ajax__calendar_year {
+    color: black;
+    font-weight: bold;
+}
+
+
+.panel {
+    padding: 6px;
+    margin: 5px;
+    font: normal 11px auto Calibri, "trebuchet ms", verdana;
+    background-color: #ffffff;
+    border: solid;
+    border-width: thin;
+    color: #4f6b72;
+}
+
+.panelWithoutPadding {
+    padding: 0px;
+    margin: 5px;
+    font: normal 11px auto Calibri;
+    background-color: #ffffff;
+    border: solid;
+    border-width: thin;
+    color: #4f6b72;
+}
+
+.popuppanel {
+    background-color: #dddddd;
+    cursor: move;
+    border: solid 1px gray;
+    height: 20px;
+    text-align: center;
+}
+
+.pnlPOP {
+    /*background-color: #dddddd;*/
+    cursor: move;
+    border: 5px ridge gray;
+    height: 20px;
+    text-align: center;
+    background-color: #b5d0fb;
+    color: #000000;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    font-size: 16px;
+    font-family: calibri;
+}
+
+.ModalPopupBG {
+    background-color: rgb(250,255,255); /* #ffffff; #666699;*/
+    border-bottom-style: solid;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+.divskyblue {
+    background-color: #CDDFFC;
+    color: #ffffff;
+    border-width: thin;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+    font-size: medium;
+    font-family: calibri;
+}
+
+
+.divLightGreen {
+    background-color: #E3EBDE;
+    color: #000000;
+    border-width: thin;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+    font-family: Calibri,verdana;
+}
+
+.divLightBlue {
+    background-color: rgb(0,162,232);
+    color: #FFFFFF;
+    border-width: thin;
+    font-weight: bold;
+    font-variant: normal;
+    font-style: normal;
+    font-family: Calibri, verdana;
+}
+
+.divSearchHeader {
+    background-color: rgb(223,236,255); /*  #E0E9D8;*/
+    color: #000000;
+    font-size: small;
+    font-family: Calibri, Verdana /* #ADC598 */;
+}
+
+
+.bottompanel {
+    background-color: #b5d0fb;
+    color: #ffffff;
+    border-width: thin;
+    font-weight: bold;
+    font-variant: normal;
+    font-style: normal;
+    font-size: medium;
+    font-family: calibri;
+    width: 1336px;
+    position: absolute;
+    top: 597px; /* 602px; */
+    height: 35px;
+    padding-top: 2px;
+    padding-left: 4px;
+    /*  text-align :center ; */
+}
+
+
+.popuppanel {
+    background-color: #dddddd;
+    cursor: move;
+    border: solid 1px gray;
+    height: 20px;
+    text-align: center;
+}
+
+.label {
+    font-size: 12px;
+    font-family: Calibri;
+    color: black;
+}
+
+.labelOverFlowWrap {
+    font-size: 12px;
+    font-family: Calibri;
+    color: black;
+    overflow-wrap: break-word;
+}
+
+.labelWithBorder {
+    border: thin outset #000000;
+    font-size: 12px;
+    font-family: 'Calibri';
+    color: black;
+    vertical-align: text-bottom;
+    display: inline-block;
+    width: 100px;
+    height: 17px;
+}
+
+.labelWithBorderRightAlign {
+    border: thin outset #000000;
+    font-size: 12px;
+    font-family: 'Calibri';
+    color: black;
+    vertical-align: text-bottom;
+    display: inline-block;
+    width: 100px;
+    height: 17px;
+    text-align: right;
+}
+
+.labelWithWhiteText {
+    font-size: 12px;
+    font-family: 'Calibri';
+    color: White;
+}
+
+.labelBold {
+    font-size: 14px;
+    font-family: 'Calibri';
+    color: black;
+}
+
+.textbox {
+    font-size: 12px;
+    font-family: Calibri, verdana,helvetica, ms sans serif;
+    color: black;
+    border-style: solid;
+    border-width: thin;
+    border-color: Black;
+    height: 17px;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.textboxRightAlign {
+    font-size: 12px;
+    font-family: Calibri,verdana,helvetica, ms sans serif;
+    color: black;
+    text-align: right;
+    border-style: solid;
+    border-width: thin;
+    border-color: Black;
+    padding: 0px;
+    vertical-align: top;
+    height: 17px;
+}
+
+.NotEditabletextbox {
+    font-size: 12px;
+    font-family: Calibri, verdana,helvetica, ms sans serif;
+    color: black;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    background-color: #FFFFFF;
+    height: 17px;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.NotEditabletxtRightAlign {
+    font-size: 12px;
+    font-family: Calibri,verdana,helvetica, ms sans serif;
+    color: black;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    background-color: #FFFFFF;
+    text-align: right;
+    height: 17px;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.headergreen {
+    font-size: 16px;
+    font-family: calibri;
+    font-weight: bold;
+    color: green;
+    background-color: transparent;
+}
+
+.headerorange {
+    font-size: 16px;
+    font-family: calibri;
+    font-weight: bold;
+    color: orange;
+    background-color: transparent;
+}
+
+.headerred {
+    font-size: 16px;
+    font-family: calibri;
+    font-weight: bold;
+    color: red;
+    background-color: transparent;
+}
+
+.headerblue {
+    font-size: 16px;
+    font-family: Calibri;
+    font-weight: bold;
+    color: blue;
+    background-color: transparent;
+}
+
+.headerblack {
+    font-size: 14px;
+    font-family: 'Calibri';
+    font-weight: bold;
+    color: black;
+    background-color: transparent;
+}
+
+.headerWhite {
+    font-size: 14px;
+    font-family: 'Calibri';
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+}
+
+.dropdownlist {
+    font-size: 12px;
+    font-family: Calibri, arial;
+    color: black;
+    font-weight: lighter;
+    width: 120px;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+}
+
+.RadioBtn {
+    font-size: 12px;
+    font-family: arial;
+    color: black;
+    font-weight: lighter;
+}
+
+.gridEmptyHeader {
+    font-family: Calibri;
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #507CD1; /** #c6e0c9;#FF9933;#A8D3FF; **/
+    color: white;
+    height: 18px;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.gridEmptyHeaderText {
+    font-family: Calibri;
+    font-size: 14px;
+    text-align: center;
+    Width: 100%;
+}
+
+.gridcolumnheader {
+    font-family: Calibri;
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #507CD1; /** #c6e0c9;#FF9933;#A8D3FF; **/
+    color: white;
+    height: 18px;
+    text-align: left;
+}
+
+.gridrows {
+    font-family: Calibri, verdana,helvetica, ms sans serif;
+    font-size: 13px;
+    color: black;
+    height: 5px;
+    background-color: #EFF3FB;
+}
+
+.Alternategridrows {
+    font-family: Calibri, verdana,helvetica, ms sans serif;
+    font-size: 13px;
+    color: black;
+    height: 5px;
+    background-color: White; /** #FFF2E6; #ECF5FF; **/
+}
+
+input[disabled='disabled'] { /* Text and background colour, medium red on light yellow */
+    color: Gray;
+    /*   background-color:Gray; */
+    display: inline;
+}
+
+.mandatory /*   anamika 20141107 */ {
+    font-family: Calibri, verdana,helvetica, ms sans serif;
+    font-size: small;
+    color: red;
+}
+
+
+.pnlHelp3HeightWidth { /*   anamika 20141218 */
+    width: 610px;
+    height: 412px;
+}
+
+.pnlHelp3Width { /*   anamika 20141218 */
+    width: 610px;
+}
+
+
+
+
+
+.Help2GridPanel {
+    font: normal 11px auto Calibri,"trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    Height: 375px;
+    Width: 1005px;
+    vertical-align: top;
+}
+
+.Help2SearchPanel {
+    background-color: rgb(223,236,255);
+    color: #000000;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+    font-family: verdana;
+    Height: 80px;
+    Width: 1005px;
+}
+
+.Help2MainPanel {
+    padding: 1px;
+    margin-left: 6px;
+    margin-top: 2px;
+    font: normal 11px auto Calibri,"trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    border: solid;
+    border-width: thin;
+    Height: 478px;
+    Width: 1005px;
+}
+
+
+.Help2HeaderAlign {
+    text-align: left;
+    font-size: 14px;
+    font-family: calibri;
+    font-weight: bold;
+    color: blue;
+    background-color: transparent;
+}
+
+.Help2headerStyle {
+    background-color: #507CD1;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.Help2rowStyle {
+    background-color: #EFF3FB;
+}
+
+.Help2alternatingRowStyle {
+    background-color: #fff;
+}
+
+.Help2footerStyle {
+    background-color: #4f5e74;
+}
+
+.Help2pagerStyle {
+    background-color: #4f5e74;
+    color: #fff;
+}
+
+    .Help2pagerStyle td table {
+        margin: auto;
+    }
+
+.Help2rows {
+    font-family: Calibri, verdana,helvetica, ms sans serif;
+    font-size: 13px;
+    color: black;
+    height: 5px;
+    background-color: #EFF3FB;
+    Height: 99%;
+    Width: 99%;
+}
+
+.Help1GridPanel {
+    font: normal 11px auto Calibri, "trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    Height: 420px;
+    Width: 637px;
+    vertical-align: top;
+}
+
+.Help1SearchPanel {
+    background-color: rgb(223,236,255);
+    color: #000000;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+    font-family: verdana;
+    Height: 75px;
+    Width: 637px;
+    vertical-align: top;
+}
+
+.Help1MainPanel {
+    padding: 1px;
+    margin: 1px;
+    font: normal 11px auto Calibri,"trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    border: solid;
+    border-width: thin;
+    Height: 525px;
+    Width: 637px;
+    vertical-align: top;
+}
+
+
+.Help1HeaderAlign {
+    text-align: left;
+    font-size: 15px;
+    font-family: calibri;
+    font-weight: bold;
+    color: blue;
+    background-color: transparent;
+}
+
+.Help1headerStyle {
+    background-color: #507CD1;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.Help1rowStyle {
+    background-color: #EFF3FB;
+}
+
+.Help1alternatingRowStyle {
+    background-color: #fff;
+}
+
+.Help1footerStyle {
+    background-color: #4f5e74;
+}
+
+.Help1pagerStyle {
+    background-color: #4f5e74;
+    color: #fff;
+}
+
+    .Help1pagerStyle td table {
+        margin: auto;
+    }
+
+.Help1rows {
+    font-family: Calibri, verdana,helvetica, ms sans serif;
+    font-size: 13px;
+    color: black;
+    height: 5px;
+    background-color: #ffd800;
+    Height: 99%;
+    Width: 99%;
+}
+
+.Help3GridPanel {
+    font: normal 11px auto Calibri, "trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    Height: 400px;
+    Width: 1300px;
+    vertical-align: top;
+}
+
+.Help3SearchPanel {
+    background-color: rgb(223,236,255);
+    color: #000000;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+    font-family: verdana;
+    Height: 100px;
+    Width: 1300px;
+}
+
+.Help3MainPanel {
+    padding: 1px;
+    margin-left: 5px;
+    margin-top: 2px;
+    font: normal 11px auto Calibri,"trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    border: solid;
+    border-width: thin;
+    Height: 470px;
+    Width: 1300px;
+}
+
+.Help3HeaderAlign {
+    text-align: left;
+    font-size: 14px;
+    font-family: calibri;
+    font-weight: bold;
+    color: green;
+    background-color: transparent;
+}
+
+.Help3headerStyle {
+    background-color: #507CD1;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.Help3rowStyle {
+    background-color: #EFF3FB;
+}
+
+.Help3alternatingRowStyle {
+    background-color: #fff;
+}
+
+.Help3footerStyle {
+    background-color: #4f5e74;
+}
+
+.Help3pagerStyle {
+    background-color: #4f5e74;
+    color: #fff;
+}
+
+    .Help3pagerStyle td table {
+        margin: auto;
+    }
+
+.Help3rows {
+    font-family: Calibri,verdana,helvetica, ms sans serif;
+    font-size: 13px;
+    color: black;
+    height: 5px;
+    background-color: #ffd800;
+    Height: 99%;
+    Width: 99%;
+}
+
+.HelpNoOfRecords {
+    color: black;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.DenomGridPanel {
+    font: normal 11px auto Calibri,"trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    Height: 340px;
+    Width: 400px;
+    vertical-align: top;
+}
+
+.DenomSearchPanel {
+    background-color: rgb(223,236,255);
+    color: #000000;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+    font-family: verdana;
+    Height: 30px;
+    Width: 400px;
+}
+
+.DenomMainPanel {
+    padding: 1px;
+    margin: 1px;
+    font: normal 11px auto Calibri,"trebuchet ms", verdana;
+    background-color: #ffffff;
+    color: #4f6b72;
+    border: solid;
+    border-width: thin;
+    Height: 470px;
+    Width: 400px;
+}
+
+
+.DenomHeaderAlign {
+    text-align: center;
+    font-size: 15px;
+    font-family: calibri;
+    font-weight: bold;
+    color: blue;
+    background-color: transparent;
+}
+
+.DenomheaderStyle {
+    background-color: #507CD1;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.DenomrowStyle {
+    background-color: #EFF3FB;
+}
+
+.DenomalternatingRowStyle {
+    background-color: #fff;
+}
+
+.DenomfooterStyle {
+    background-color: #4f5e74;
+}
+
+.DenompagerStyle {
+    background-color: #4f5e74;
+    color: #fff;
+}
+
+    .DenompagerStyle td table {
+        margin: auto;
+    }
+
+.Denomrows {
+    font-family: Calibri,verdana,helvetica, ms sans serif;
+    font-size: 13px;
+    color: black;
+    height: 5px;
+    background-color: #ffd800;
+    Height: 99%;
+    Width: 99%;
+}
+
+.requiredfieldred {
+    width: 10px;
+    color: red;
+}
+
+
+.textboxRightAlignBold {
+    font-size: 14px;
+    font-family: Calibri,verdana,helvetica, ms sans serif;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+    border-style: solid;
+    border-width: thin;
+    border-color: Black;
+    padding: 0px;
+    vertical-align: top;
+    height: 17px;
+}
