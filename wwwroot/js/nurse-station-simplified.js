@@ -47,7 +47,15 @@
 
     function alertMsg(text, cb) {
         if (!text) { if (cb) cb(); return; }
-        if (window.alertify && alertify.alert) alertify.alert(esc(text), function () { if (cb) cb(); });
+        if (window.alertify && alertify.alert) {
+            // Track that a modal alert is open so the background auto-refresh doesn't re-render the grid
+            // (a visible "flash") while the user is reading / dismissing it.
+            state.alertOpen = (state.alertOpen || 0) + 1;
+            alertify.alert(esc(text), function () {
+                state.alertOpen = Math.max(0, (state.alertOpen || 1) - 1);
+                if (cb) cb();
+            });
+        }
         else { window.alert(text); if (cb) cb(); }
     }
 
@@ -346,16 +354,23 @@
         }
         function idle() {
             var a = document.activeElement;
-            return document.visibilityState === 'visible' && el('custommenu').hidden && el('losPopup').hidden &&
+            // Don't refresh while the user is busy with a popup: an open alert, the row menu, or any of the
+            // modal panels (LOS, patient tracking, count details). Refreshing re-renders the grid behind them,
+            // which shows as a disruptive "flash" — and on a flaky network the online handler can do it repeatedly.
+            return document.visibilityState === 'visible' && !state.alertOpen &&
+                el('custommenu').hidden && el('losPopup').hidden &&
+                (!el('trkPopup') || el('trkPopup').hidden) && (!el('cntPopup') || el('cntPopup').hidden) &&
                 !(a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName));
         }
         setInterval(function () {
             if (state.init && (due() || state.offline) && idle()) search({ refresh: true, keepScroll: true, quiet: true });
         }, 15000);
         document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState === 'visible' && state.init && due()) search({ refresh: true, keepScroll: true, quiet: true });
+            if (document.visibilityState === 'visible' && state.init && due() && idle()) search({ refresh: true, keepScroll: true, quiet: true });
         });
-        window.addEventListener('online', function () { if (state.init) search({ refresh: true, keepScroll: true, quiet: true }); });
+        // Reconnect: only refresh if the data is actually stale/offline AND no popup is open — otherwise a flaky
+        // link firing repeated "online" events would flash the grid every few seconds.
+        window.addEventListener('online', function () { if (state.init && (due() || state.offline) && idle()) search({ refresh: true, keepScroll: true, quiet: true }); });
     }
 
     // ------------------------------------------------------------------ filter panel
@@ -960,41 +975,47 @@
         }, 100);
     }
 
-    // First path segment of a URL, lower-cased — i.e. the legacy web-app root the page lives under
-    // (e.g. "clientr2" for Medicine Administration, "cwwebmvc" for Daily Progress Notes).
-    function appRoot(u) {
-        try {
-            var p = new URL(u, window.location.href).pathname.toLowerCase().replace(/^\/+/, '');
-            return p.split('/')[0] || '';
-        } catch (e) { return ''; }
-    }
-
-    // When a module is opened in its own tab, its own Exit button navigates the tab away from the module —
-    // back to the legacy suite shell (the host dashboard/login under MainLoginAsp) or to its own app home.
-    // We watch the tab and close it the instant it leaves the module, so Exit just closes the tab instead of
-    // showing another page. Different modules live under different app roots (CLIENTR2, CWWEBMVC, …) and exit
-    // to different landing pages, so we close when EITHER the tab reaches a known shell page OR it leaves the
-    // module's own app root entirely. We don't touch any module's exit code; we only react to where it goes.
-    // NOTE: the browser only lets us read the tab's address while it stays on OUR origin. For auto-close to
-    // fire, this app must be served from the SAME origin (scheme + host + port) as the legacy suite. When it
-    // is cross-origin (e.g. running on localhost in dev), the address can't be read and the tab stays open.
+    // When a module is opened in its own tab we make its Exit close that tab — and ONLY its Exit. Two same-origin
+    // hooks, re-applied on a short poll so they survive the module's own postbacks:
+    //   1. Exit-button intercept: a capturing click handler on the button labelled exactly "Exit" stops the
+    //      module's own exit code and closes the tab instead. No navigation happens, so there's no dashboard/login
+    //      flash. Every other button (Save, Print, Med Report, …) is left completely alone.
+    //   2. Exit-function overrides: GoToMainMenu() and friends are replaced to just close the tab.
+    // We deliberately do NOT close on navigation — reaching the shell, leaving the module's folder, or opening a
+    // report in the same tab. That navigation-based close was what shut the tab when buttons like "Med Report"
+    // opened another page. Only Exit closes the tab now. We never change a module's code.
+    // NOTE: these hooks need the module tab to be on OUR origin (true when this app is served from the legacy
+    // suite's origin). A module that self-closes via window.close() still works regardless of origin.
     function watchForExit(win, moduleUrl) {
         if (!win) return;
-        var moduleRoot = appRoot(moduleUrl);               // the app root the module itself runs under
         var timer = setInterval(function () {
             if (!win || win.closed) { clearInterval(timer); return; }
-            var href;
-            try { href = String(win.location.href || ''); }
-            catch (e) { return; }                          // cross-origin while the module runs — can't read, keep waiting
-            if (!href || /^about:/i.test(href)) return;    // blank tab before the module has loaded
-            var here = appRoot(href);
-            var leftModule = moduleRoot && here && here !== moduleRoot;   // navigated out of the module's app
-            var atShell = /mainloginasp\/|dashboard\.aspx|login\.aspx/i.test(href);
-            if (leftModule || atShell) {
-                clearInterval(timer);
-                try { win.close(); } catch (e) { }
-            }
-        }, 300);
+            try {
+                var doc = win.document;                    // throws while the tab is cross-origin — caught below
+                if (doc) {
+                    var ctrls = doc.querySelectorAll('input[type="button"],input[type="submit"],button,a');
+                    for (var i = 0; i < ctrls.length; i++) {
+                        var b = ctrls[i];
+                        if (b.__nsExit) continue;
+                        if ((b.value || b.textContent || '').trim().toLowerCase() === 'exit') {
+                            b.__nsExit = true;
+                            b.addEventListener('click', function (ev) {
+                                try { ev.preventDefault(); ev.stopImmediatePropagation(); } catch (e) { }
+                                try { win.close(); } catch (e) { }
+                            }, true);
+                        }
+                    }
+                }
+                // Also neutralise the known AJAX exit helpers (can be invoked without a button click).
+                ['GoToMainMenu', 'GoToMainPage', 'RedirectToDashboard', 'ExitPage'].forEach(function (fn) {
+                    if (typeof win[fn] === 'function' && win[fn].__nsClose !== true) {
+                        var closer = function () { try { win.close(); } catch (e) { } };
+                        closer.__nsClose = true;
+                        win[fn] = closer;
+                    }
+                });
+            } catch (e) { }                                // cross-origin or transient — keep polling
+        }, 30);
         setTimeout(function () { clearInterval(timer); }, 8 * 60 * 60 * 1000);   // safety stop
     }
 
@@ -1007,7 +1028,9 @@
         if (ready) {                                       // prepared in the background: open straight away
             var direct = window.open(ready, '_blank');
             if (!direct) window.location.href = ready;     // pop-ups blocked: fall back to this tab
-            else { try { direct.opener = null; } catch (e) { } watchForExit(direct, ready); }
+            // Keep window.opener intact: some legacy modules' Exit button closes its own tab via window.close(),
+            // which Chrome blocks once the opener is severed. watchForExit still handles modules that navigate away.
+            else watchForExit(direct, ready);
             return;
         }
 
@@ -1023,7 +1046,9 @@
                 return;
             }
             var url = result.url || result.Url;
-            if (tab) { try { tab.opener = null; } catch (e) { } tab.location.href = url; watchForExit(tab, url); }
+            // Keep window.opener intact so the module's own Exit (window.close) can close its tab; Chrome blocks
+            // window.close() on a tab whose opener was severed. watchForExit still handles navigate-away modules.
+            if (tab) { tab.location.href = url; watchForExit(tab, url); }
             else window.location.href = url;              // pop-ups blocked: fall back to this tab
         }).catch(function (err) { closeTab(); fail(err); });
     }

@@ -293,7 +293,16 @@ public static class NurseStationApi
             string? bridged = null;
             var emrAction = SimplifiedModuleLauncher.EmrAction(r.Key);
             if (emrAction is not null && ipNo != 0 && !launcher.HasSsoSecret)
-                bridged = await bridge.GetEmrUrlAsync(s, ipNo, emrAction);
+            {
+                // Cold start (right after a deployment / app-pool recycle): the legacy page may still be warming
+                // up, so the first attempt can come back empty. Retry briefly instead of giving up — this makes
+                // the FIRST tap open the real signed module rather than closing with a "try again" message.
+                for (var attempt = 0; attempt < 3 && bridged is null; attempt++)
+                {
+                    if (attempt > 0) await Task.Delay(500);
+                    bridged = await bridge.GetEmrUrlAsync(s, ipNo, emrAction);
+                }
+            }
 
             var result = launcher.Build(s, launchContext, r.Key, ipNo, ptnNo, Messages(ctx), bridged);
             if (result.Ok && !r.Prefetch) s.InpatientNo = ipNo.ToString();      // a prefetch must not change which patient is remembered

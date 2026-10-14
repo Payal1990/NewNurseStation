@@ -78,20 +78,33 @@ public sealed class SimplifiedModuleLauncher
     /// <summary>True when this app can sign the EMR token itself (Legacy:SsoSecret); otherwise the legacy page is asked for the link.</summary>
     public bool HasSsoSecret => !string.IsNullOrWhiteSpace(_config["Legacy:SsoSecret"]);
 
-    /// <summary>Menu visibility (rights 406/1380 and 406/1381).</summary>
-    public Dictionary<string, bool> MenuVisibility(NsSession s) => new()
+    /// <summary>Menu visibility (rights 406/1380 and 406/1381), minus anything listed in Tablet:HiddenModules.</summary>
+    public Dictionary<string, bool> MenuVisibility(NsSession s)
     {
-        ["DFS"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1380))),
-        ["DFSN"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1380))),
-        ["INA"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1380))),
-        ["MD"] = true,
-        ["IPASS"] = true,
-        ["NCP"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1381))),
-        ["NCPN"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1381))),
-        ["POC"] = true,
-        ["NAA"] = true,
-        ["DPN"] = true,
-    };
+        var vis = new Dictionary<string, bool>
+        {
+            ["DFS"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1380))),
+            ["DFSN"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1380))),
+            ["INA"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1380))),
+            ["MD"] = true,
+            ["IPASS"] = true,
+            ["NCP"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1381))),
+            ["NCPN"] = HasAccess(SplitRights(_db.UserRights(s, 406, 1381))),
+            ["POC"] = true,
+            ["NAA"] = true,
+            ["DPN"] = true,
+        };
+        // Modules listed in Tablet:HiddenModules are hidden regardless of rights — e.g. the "- New" modules
+        // (DFSN / NCPN / INA) that aren't deployed in the live EMR. Edit the list in appsettings per environment.
+        foreach (var key in HiddenModules())
+            vis[key] = false;
+        return vis;
+    }
+
+    /// <summary>Module keys to hide from the menu, from Tablet:HiddenModules (empty when not configured).</summary>
+    private string[] HiddenModules() =>
+        (_config.GetSection("Tablet:HiddenModules").Get<string[]>() ?? Array.Empty<string>())
+            .Select(k => k?.Trim() ?? "").Where(k => k.Length > 0).ToArray();
 
     /// <summary>
     /// Build a module launch URL with LaunchContext preserved.
@@ -111,18 +124,26 @@ public sealed class SimplifiedModuleLauncher
 
         if (ipNo == 0) return new(false, msg(9));
 
+        // In bridge mode (no local SsoSecret) the signed EMR link can ONLY come from the bridge. Never fall back
+        // to a token-less EmrUrl/EmrV2Url — a URL without a token just lands the user on the EMR login/dashboard.
+        // When the bridge hasn't supplied the link yet (e.g. the cold-start race right after an app-pool recycle,
+        // before the legacy page is warm), return null: the open then fails cleanly and the prefetch caches
+        // nothing, so the next tap — with the bridge now warm — opens the real signed module instead of the
+        // EMR dashboard. We only self-sign (EmrUrl/EmrV2Url) when we actually hold a secret.
+        string? Emr(Func<string?> selfSign) => bridgedUrl ?? (HasSsoSecret ? selfSign() : null);
+
         string? url = key switch
         {
-            "DFS" => bridgedUrl ?? EmrUrl(s, ipNo, ptnNo, "DFS", _config["Tablet:DailyFlowSheetVariant"]),
-            "NCP" => bridgedUrl ?? EmrUrl(s, ipNo, ptnNo, "NCP", _config["Tablet:NurseCarePlanVariant"]),
-            "DFSN" => bridgedUrl ?? EmrV2Url(s, ipNo, ptnNo, "/daily-flow-sheet", RightsDfs),
+            "DFS" => Emr(() => EmrUrl(s, ipNo, ptnNo, "DFS", _config["Tablet:DailyFlowSheetVariant"])),
+            "NCP" => Emr(() => EmrUrl(s, ipNo, ptnNo, "NCP", _config["Tablet:NurseCarePlanVariant"])),
+            "DFSN" => Emr(() => EmrV2Url(s, ipNo, ptnNo, "/daily-flow-sheet", RightsDfs)),
             // Nursing Assessment - New: same as Daily Flow Sheet - New, only the EMR_AppV2 route differs.
             // Bridge mode reuses the DFS-New signed link and swaps the route; otherwise it signs its own token.
             "INA" => bridgedUrl is not null
                 ? bridgedUrl.Replace("daily-flow-sheet", "initial-nursing-assessment")
-                : EmrV2Url(s, ipNo, ptnNo, "/initial-nursing-assessment", RightsDfs),
-            "NCPN" => bridgedUrl ?? EmrV2Url(s, ipNo, ptnNo, "/nursing-care-plan", RightsNcp),
-            "POC" => bridgedUrl ?? EmrV2Url(s, ipNo, ptnNo, "/pre-operative-checklist", RightsDfs),
+                : (HasSsoSecret ? EmrV2Url(s, ipNo, ptnNo, "/initial-nursing-assessment", RightsDfs) : null),
+            "NCPN" => Emr(() => EmrV2Url(s, ipNo, ptnNo, "/nursing-care-plan", RightsNcp)),
+            "POC" => Emr(() => EmrV2Url(s, ipNo, ptnNo, "/pre-operative-checklist", RightsDfs)),
             "MD" => MedicineAdministration(s, context, ipNo, ptnNo),
             "IPASS" => NetIdModule(s, context, ModCd.NursingAssForm, SubModCd.iPasshandoff, "BaseMvcAppPath", ipNo, ptnNo),
             "NAA" => NetIdModule(s, context, ModCd.DoctorsWorkbech, SubModCd.NrsngAst, "BaseAppPath", ipNo, ptnNo),
